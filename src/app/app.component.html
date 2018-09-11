@@ -1,0 +1,51 @@
+
+<nav class="navbar navbar-default">
+    <div *ngIf="loggedIn" class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Weather APP</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#">Welcome Sudheer!</a></li>
+        <li><a (click)="Logout()" >LogOut</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+<div *ngIf="loggedIn" class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <select (change)="citySelect($event)">
+                    <option [value]="">Please select</option>  
+                <option [value]="city.id" *ngFor="let city of cities">{{city.name}}</option>
+            </select>
+        </div>
+
+        <div class="col-xs-4">
+            <button class="btn btn-info">Select city in dropdown</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <div *ngIf="cityInfo.name" >
+        <h4 style="color:dodgerblue">Showing weather forecast for {{cityInfo.name}},{{cityInfo.country}}.</h4>
+        <div *ngFor="let item of temperatureList">
+           <span style="color:blue;font-weight:bold">{{item.dt*1000 | date}}</span>
+          <span> 
+              <img *ngIf="item.clouds<20" height="50px" width="50px" title={{item.clouds}} src="../assets/cloud_less.png" alt="">
+              <img *ngIf="item.clouds>=20" height="50px" width="50px" title={{item.clouds}} src="../assets/cloud_more.png" alt="">
+         </span> <span>pressure: {{item.pressure}}</span> <span>speed: {{item.speed}}</span> 
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="!loggedIn" class="container">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+            <app-login></app-login>
+        </div>
+    </div>
+</div>
