@@ -15,6 +15,6 @@ Incase of local environment has ng version incompatibility, then npm start will 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-##Extra
+## Extra
 login, logout feature is added as extra.
 
