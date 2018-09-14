@@ -8,6 +8,7 @@ import { HttpServiceService } from "./http-service.service";
 })
 export class AppComponent implements OnInit {
   loggedIn:boolean;
+  objLoaderStatus:boolean=false;
   cities = [ {id:1275339,name:'Mumbai'}, {id:1269843,name:'Hyderabad'}, {id:1264527,name:'Chennai'}, {id:1273294,name:'Delhi'}];
   temperatureList = [];
   cityInfo = {};
@@ -25,11 +26,14 @@ export class AppComponent implements OnInit {
     if (event.target.value=='') {
       return;
     }
+    this.objLoaderStatus=true;
     this.http.get(event.target.value)
     .subscribe(
       (res) => {
         console.log(res);
+        this.objLoaderStatus=false;
         this.temperatureList=res.list;
+        this.temperatureList.length=5;
         this.cityInfo= res.city;
       },
       (error) => console.log(error)

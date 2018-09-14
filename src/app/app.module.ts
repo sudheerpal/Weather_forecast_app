@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {HttpServiceService} from './http-service.service';
-
 import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [

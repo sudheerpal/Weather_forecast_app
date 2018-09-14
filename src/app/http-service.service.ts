@@ -11,7 +11,7 @@ export class HttpServiceService {
   constructor(private http:Http) { }
 
   public get(url:string): Observable<any>{
-    return this.http.get(Config.baseurl+url+'&APPID='+Config.app_id).map((res: Response) => {
+    return this.http.get(Config.baseurl+url+'&units=metric&APPID='+Config.app_id).map((res: Response) => {
       return res.json();
     } )
     }
