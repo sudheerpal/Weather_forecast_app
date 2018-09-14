@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
   }
 
   citySelect(event){
-    // console.log(event.target.value);
-    if (event.target.value=='') {
+    console.log(event.target.value);
+    if (event.target.value=='1') {
       return;
     }
     this.objLoaderStatus=true;
